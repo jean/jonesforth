@@ -16,7 +16,7 @@
 	languages, even if you will never use them.
 
 	LISP is the ultimate high-level language, and features from LISP are being added every
-	decade to the more common languages.  But FORTH is in some ways the ultimate in low level
+	decade to the more common languages.  But FORTH is in some ways the ultimate in low-level
 	programming.  Out of the box it lacks features like dynamic memory management and even
 	strings.  In fact, at its primitive level it lacks even basic concepts like IF-statements
 	and loops.
@@ -34,7 +34,7 @@
 	a little bit of assembly to talk to the hardware and implement a few primitives, all the
 	rest of the language and compiler is written in FORTH itself.  Remember I said before
 	that FORTH lacked IF-statements and loops?  Well of course it doesn't really because
-	such a lanuage would be useless, but my point was rather that IF-statements and loops are
+	such a language would be useless, but my point was rather that IF-statements and loops are
 	written in FORTH itself.
 
 	Now of course this is common in other languages as well, and in those languages we call
@@ -111,7 +111,7 @@
 	ASSEMBLING ----------------------------------------------------------------------
 
 	If you want to actually run this FORTH, rather than just read it, you will need Linux on an
-	i386.  Linux because instead of programming directly to the hardware on a bare PC which I
+	i386.  Linux, because instead of programming directly to the hardware on a bare PC which I
 	could have done, I went for a simpler tutorial by assuming that the 'hardware' is a Linux
 	process with a few basic system calls (read, write and exit and that's about all).  i386
 	is needed because I had to write the assembly for a processor, and i386 is by far the most
@@ -124,7 +124,7 @@
 	gcc -m32 -nostdlib -static -Wl,-Ttext,0 -Wl,--build-id=none -o jonesforth jonesforth.S
 	cat jonesforth.f - | ./jonesforth
 
-	If you want to run your own FORTH programs you can do:
+	If you want to run your own FORTH programs, you can do:
 
 	cat jonesforth.f myprog.f | ./jonesforth
 
@@ -148,7 +148,7 @@
 	(3) Constants are prefixed with '$', and you mustn't forget it!  If you forget it then it
 	    causes a read from memory instead, so:
 	    mov $2,%eax		moves number 2 into %eax
-	    mov 2,%eax		reads the 32 bit word from address 2 into %eax (ie. most likely a mistake)
+	    mov 2,%eax		reads the 32 bit word from address 2 into %eax (i.e. most likely a mistake)
 
 	(4) gas has a funky syntax for local labels, where '1f' (etc.) means label '1:' "forwards"
 	    and '1b' (etc.) means label '1:' "backwards".  Notice that these labels might be mistaken
@@ -182,7 +182,7 @@
 
 	I'll come to the definition of the word later.  For now just look at the header.  The first
 	4 bytes are the link pointer.  This points back to the previous word in the dictionary, or, for
-	the first word in the dictionary it is just a NULL pointer.  Then comes a length/flags byte.
+	the first word in the dictionary, it is just a NULL pointer.  Then comes a length/flags byte.
 	The length of the word can be up to 31 characters (5 bits used) and the top three bits are used
 	for various flags which I'll come to later.  This is followed by the name itself, and in this
 	implementation the name is rounded up to a multiple of 4 bytes by padding it with zero bytes.
@@ -434,10 +434,10 @@
 	.
 
 	My list of four things are: (1) What does "EXIT" do?  (2) which is related to (1) is how do
-	you call into a function, ie. how does %esi start off pointing at part of QUADRUPLE, but
+	you call into a function, i.e. how does %esi start off pointing at part of QUADRUPLE, but
 	then point at part of DOUBLE.  (3) What goes in the codeword for the words which are written
 	in FORTH?  (4) How do you compile a function which does anything except call other functions
-	ie. a function which contains a number like : DOUBLE 2 * ; ?
+	i.e. a function which contains a number like : DOUBLE 2 * ; ?
 
 	THE INTERPRETER AND RETURN STACK ------------------------------------------------------------
 
